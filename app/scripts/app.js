@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'restangular'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -34,4 +35,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function (RestangularProvider) {
+      RestangularProvider.setBaseUrl('/api/');
   });
