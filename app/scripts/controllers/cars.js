@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name yoAngularPhpCrudApp.controller:CarsCtrl
+ * @name myWebAppApp.controller:CarsCtrl
  * @description
  * # CarsCtrl
- * Controller of the yoAngularPhpCrudApp
+ * Controller of the myWebAppApp
  */
-angular.module('yoAngularPhpCrudApp')
+angular.module('myWebAppApp')
   .controller('CarsCtrl', function ($scope, Restangular) {
       var url = 'cars';
       var Cars = Restangular.all(url);
