@@ -447,8 +447,14 @@ So as you read through the code, have a look at some of the directives in use an
                     <th>Model</th>
                     <th>pkg</th>
                     <th>Year</th>
-                    <th class="text-center"><span ng-hide="isAddNewCar || isEditVisible !== false">Delete</span><span ng-show="isAddNewCar || isEditVisible !== false">Cancel</span></th>
-                    <th class="text-center"><span ng-hide="isAddNewCar || isEditVisible !== false">Edit</span><span ng-show="isAddNewCar || isEditVisible !== false">Save</span></th>
+                    <th class="text-center">
+                        <span ng-hide="isAddNewCar || isEditVisible !== false">Delete</span>
+                        <span ng-show="isAddNewCar || isEditVisible !== false">Cancel</span>
+                    </th>
+                    <th class="text-center">
+                        <span ng-hide="isAddNewCar || isEditVisible !== false">Edit</span>
+                        <span ng-show="isAddNewCar || isEditVisible !== false">Save</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
