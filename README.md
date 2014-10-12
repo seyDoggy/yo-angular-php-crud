@@ -144,7 +144,7 @@ It's assumed in this tutorial that you have a MySQL database called `cars_demo` 
 1. In the `app/api` directory, make a new `index.php` file and add the following:
 
     ```php
-    &lt;?php
+    <?php
     require 'vendor/autoload.php';
     ```
 
