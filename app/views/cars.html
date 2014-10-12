@@ -1,1 +1,72 @@
-<p>This is the cars view.</p>
+<div class="carsContainer">
+    <button ng-click="showAdd()" type="button" class="btn btn-sm btn-primary" ng-disabled="isAddNewCar || isEditVisible !== false" aria-hidden="true"><i class="glyphicon glyphicon-plus"></i> Add Car</button>
+    <form novalidate="novalidate" class="form-horizontal">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>pkg</th>
+                    <th>Year</th>
+                    <th class="text-center"><span ng-hide="isAddNewCar || isEditVisible !== false">Delete</span><span ng-show="isAddNewCar || isEditVisible !== false">Cancel</span></th>
+                    <th class="text-center"><span ng-hide="isAddNewCar || isEditVisible !== false">Edit</span><span ng-show="isAddNewCar || isEditVisible !== false">Save</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="isAddNewCar">
+                    <td>#</td>
+                    <td><input ng-model="newCar.make" type="text" class="form-control"/></td>
+                    <td><input ng-model="newCar.model" type="text" class="form-control"/></td>
+                    <td><input ng-model="newCar.pkg" type="text" class="form-control"/></td>
+                    <td><input ng-model="newCar.year" type="text" class="form-control"/></td>
+                    <td class="text-center">
+                        <button ng-click="hideAdd()" type="button" class="btn btn-sm btn-warning" aria-hidden="true">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button ng-click="saveCar()" type="submit" class="btn btn-sm btn-success" aria-hidden="true">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-repeat="car in cars">
+                    <td>{{$index + 1}}</td>
+                    <td>
+                        <span ng-hide="isEditVisible === $index">{{car.make}}</span>
+                        <input ng-show="isEditVisible === $index" ng-model="newCar.make" type="text" class="form-control" ng-value="{{car.make}}" placeholder="{{car.make}}"/>
+                    </td>
+                    <td>
+                        <span ng-hide="isEditVisible === $index">{{car.model}}</span>
+                        <input ng-show="isEditVisible === $index" ng-model="newCar.model" type="text" class="form-control" ng-value="{{car.model}}" placeholder={{car.model}}/>
+                    </td>
+                    <td>
+                        <span ng-hide="isEditVisible === $index">{{car.pkg}}</span>
+                        <input ng-show="isEditVisible === $index" ng-model="newCar.pkg" type="text" class="form-control" ng-value="{{car.pkg}}" placeholder="{{car.pkg}}"/>
+                    </td>
+                    <td>
+                        <span ng-hide="isEditVisible === $index">{{car.year}}</span>
+                        <input ng-show="isEditVisible === $index" ng-model="newCar.year" type="text" class="form-control" ng-value="{{car.year}}" placeholder="{{car.year}}"/>
+                    </td>
+                    <td class="text-center">
+                        <button ng-hide="isEditVisible === $index" ng-click="deleteCar($index)" type="button" ng-disabled="isAddNewCar || isEditVisible !== false" class="btn btn-sm btn-link">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                        <button ng-show="isEditVisible === $index" ng-click="showEdit(false)" type="button" class="btn btn-sm btn-warning" aria-hidden="true">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button ng-hide="isEditVisible === $index" ng-click="showEdit($index)" type="button" ng-disabled="isAddNewCar" class="btn btn-sm btn-link">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </button>
+                        <button ng-show="isEditVisible === $index" ng-click="updateCar($index)" type="submit" class="btn btn-sm btn-success" aria-hidden="true">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
